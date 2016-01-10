@@ -20,7 +20,11 @@ var allowCrossDomain = function(req, res, next) {
 }
 
 app.use(allowCrossDomain);
-app.use(express.static(__dirname + "/"))
+
+app.use(express.static(__dirname + '/public'));
+app.get('/', function(req, res) {
+	res.sendFile(__dirname + '/public/index.html');
+});
 
 var server = http.createServer(app)
 server.listen(port)
@@ -35,6 +39,6 @@ wss.on("connection", function(ws) {
 
   ws.on("close", function() {
     console.log("websocket connection close")
-    clearInterval(id)
+    //clearInterval(id)
   })
 })

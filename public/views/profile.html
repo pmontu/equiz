@@ -1,0 +1,302 @@
+
+    <nav role="navigation" class="navbar navbar-static-top">
+        <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button data-target="#bs-example-navbar-collapse-1" data-toggle="collapse" class="navbar-toggle" type="button">
+                    <span class="entypo-menu"></span>
+                </button>
+                <button class="navbar-toggle toggle-menu-mobile toggle-left" type="button">
+                    <span class="entypo-list-add"></span>
+                </button>
+                <div id="logo-mobile" class="visible-xs">
+                    <h1>eQuiz
+                        <span>v 1.0.1</span>
+                    </h1>
+                </div>
+            </div>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div id="bs-example-navbar-collapse-1" class="collapse navbar-collapse">
+
+                <ul style="margin-right:0;" class="nav navbar-nav navbar-right">
+                    <li>
+                        <a data-toggle="dropdown" class="dropdown-toggle" href="javascript:void(0);">
+                            <img alt="" class="admin-pic img-circle" src="http://api.randomuser.me/portraits/thumb/men/10.jpg">Hi, {{user.name | capitalize}}
+                        </a>
+                    </li>
+                    <li>
+                        <a data-toggle="dropdown" class="dropdown-toggle" ng-click="signout()" href="javascript:void(0)">
+                            <span class="icon-gear"></span>&#160;&#160;Log Out</a>
+                        <ul role="menu" class="dropdown-setting dropdown-menu">
+
+                            <li class="theme-bg">
+                                <div id="button-bg"></div>
+                                <div id="button-bg2"></div>
+                                <div id="button-bg3"></div>
+                                <div id="button-bg5"></div>
+                                <div id="button-bg6"></div>
+                                <div id="button-bg7"></div>
+                                <div id="button-bg8"></div>
+                                <div id="button-bg9"></div>
+                                <div id="button-bg10"></div>
+                                <div id="button-bg11"></div>
+                                <div id="button-bg12"></div>
+                                <div id="button-bg13"></div>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="hidden-xs">
+                        <a class="toggle-left" href="#">
+                            <span style="font-size:20px;" class="entypo-list-add"></span>
+                        </a>
+                    </li>
+                </ul>
+                <div class="onhover"></div>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container-fluid -->
+    </nav>
+
+
+
+    <div class="container">
+  <ul class="nav nav-tabs">
+    <li class="active"><a href="javscript:void(0);" rel="#home" class="tabMnu">Live Challenges</a></li>
+    <li><a href="javscript:void(0);" rel="#menu1" class="tabMnu">Upcoming Challenges</a></li>
+    <li><a href="javscript:void(0);" rel="#menu2" class="tabMnu">Previous Challenges</a></li>
+    <li><a href="javscript:void(0);" rel="#menu3" class="tabMnu"><i class="fa fa-calendar"></i>&nbsp;&nbsp;&nbsp;Challenges Calendar</a></li>
+  </ul>
+
+  <div class="tab-content">
+    <div id="home" class="tabMnuCon tab-pane fade in active">
+      <h3></h3>
+      <table style="border:1px solid #323754; border-spacing: 50px; padding:30px;">
+        <tr style="background:#323754; color:#fff">
+          <td style="padding:10px 10px 0 10px;">Physics</td>
+          <td style="padding:10px 10px 0 10px;">120 Points</td>
+        </tr>
+        <tr style="background:#323754; color:#fff">
+          <td style="padding:0 10px 10px 10px;">Electric Charges, Forces and Fields, Current Electricity, Moving Charges&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+          <td style="padding:0 10px 10px 10px;"></td>
+        </tr>
+        <tr style="color:#323754; padding:30px;">
+          <td style="padding:10px;">Started at 01 Dec 2015<span style="padding-right:5em"></span><i class="fa fa-clock-o"></i> IST 10:30 PM - 11:30 AM 1h<span style="padding-right:5em"></span>52 are participating<span style="padding-right:5em"></span>Earn points</td>
+          <td style="padding:10px;"><a ng-click="takeQuiz(1)" style="cursor:pointer;"><span style="border:1px solid blue; color:blue; padding:5px;">PARTICIPATE</span></a></td>
+      </tr>
+      </table>
+    </div>
+    <div id="menu1" class="tabMnuCon tab-pane fade">
+      <h3></h3>
+      <table style="border:1px solid #323754; border-spacing: 50px; padding:30px;">
+      <tr style="background:#323754; color:#fff">
+      <td style="padding:10px 10px 0 10px;">Physics</td>
+      <td style="padding:10px 10px 0 10px;">120 Points</td>
+      </tr>
+      <tr style="background:#323754; color:#fff">
+      <td style="padding:0 10px 10px 10px;">Electric Charges, Forces and Fields, Current Electricity, Moving Charges and Magnetism, Electromagnetic Induction&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+      <td style="padding:0 10px 10px 10px;"></td>
+      </tr>
+      <tr style="color:#323754; padding:30px;">
+      <td style="padding:10px;">Start at 01 JAN 2015<span style="padding-right:5em"></span><i class="fa fa-clock-o"></i> IST 10:30 PM - 11:30 AM 1h<span style="padding-right:5em"></span>52 are participating<span style="padding-right:5em"></span>Earn points</td>
+      <td style="padding:10px;"><a ng-click="remind()" style="cursor:pointer;"><span style="border:1px solid blue; color:blue; padding:5px;">Remind Me</span></a></td>
+      </tr>
+      </table>
+      <h3></h3>
+      <table style="border:1px solid #323754; border-spacing: 50px; padding:30px;">
+      <tr style="background:#323754; color:#fff">
+      <td style="padding:10px 10px 0 10px;">Physics</td>
+      <td style="padding:10px 10px 0 10px;">120 Points</td>
+      </tr>
+      <tr style="background:#323754; color:#fff">
+      <td style="padding:0 10px 10px 10px;">Electric Charges, Forces and Fields, Current Electricity, Moving Charges and Magnetism, Electromagnetic Induction&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+      <td style="padding:0 10px 10px 10px;"></td>
+      </tr>
+      <tr style="color:#323754; padding:30px;">
+      <td style="padding:10px;">Start at 10 Jan 2015<span style="padding-right:5em"></span><i class="fa fa-clock-o"></i> IST 10:30 PM - 11:30 AM 1h<span style="padding-right:5em"></span>52 are participating<span style="padding-right:5em"></span>Earn points</td>
+      <td style="padding:10px;"><a ng-click="remind()" style="cursor:pointer;"><span style="border:1px solid blue; color:blue; padding:5px;">Remind Me</span></a></td>
+      </tr>
+      </table>
+    </div>
+    <div id="menu2" class="tabMnuCon tab-pane fade">
+      <h3>Sorry</h3>
+      <p>Cant able to find any test.Take some live challenges.</p>
+    </div>
+    <div id="menu3" class="tabMnuCon tab-pane fade">
+      <h3>Coming Soon</h3>
+      <p>This feature should be in next version.</p>
+    </div>
+  </div>
+</div>
+
+    <!-- /END OF TOP NAVBAR -->
+
+    <!-- SIDE MENU -->
+    <!-- <div id="skin-select">
+        <div id="logo">
+            <h1>eQuiz
+                <span>v 1.0.1</span>
+            </h1>
+        </div>
+
+        <a id="toggle">
+            <span class="entypo-menu"></span>
+        </a>
+        <div class="skin-part">
+            <div id="tree-wrap">
+                <div class="side-bar">
+                    <ul class="topnav menu-left-nest">
+                        <li>
+                            <a href="#" style="border-left:0px solid!important;" class="title-menu-left">
+                                <span class="widget-menu">Quiz Schedule Board</span>
+                            </a>
+                        </li>
+
+                        <li>
+                            <a class="tooltip-tip ajax-load" ng-click="progress(1)" style="cursor: pointer" title="Blog App">
+                                <i class="icon-document-edit"></i>
+                                <span style="color: White;">Live Quiz</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div> -->
+    <!-- END OF SIDE MENU -->
+
+    <!--  PAPER WRAP -->
+    <!-- <div class="wrap-fluid">
+        <div class="container-fluid paper-wrap bevel tlbr" style="margin-left:19%;"> -->
+            <!-- CONTENT -->
+            <!--TITLE -->
+            <!-- <div class="row">
+                <div id="paper-top">
+                    <div class="col-sm-3">
+                        <h2 class="tittle-content-header">
+                            <span class="entypo-doc-text"></span>
+                            <span>Challenge Board
+                            </span>
+                        </h2>
+                    </div>
+
+                    <div class="col-sm-9">
+                        <div class="devider-vertical visible-lg"></div>
+                        <div class="tittle-middle-header">
+                        </div>
+
+                    </div>
+                </div>
+            </div> -->
+            <!--/ TITLE -->
+            <!--CONTENT-->
+            <!-- <div class="row" style="margin-top:30px;padding:0 15px;">
+                <div class="col-sm-12" style="background-color: #444;">
+                    <section class="page-error" >
+
+                        <div class="headline-lock text-center" id="time">
+                            <span></span>
+                        </div>
+                        <div class="lockscreen-name">Please wait..</div>
+                        <div class="lockscreen-link">
+                            <a class="lock-link" href="javascript: void(0);">Quiz will start soon. Please wait we will start the event on the scheduled time.</a>
+                        </div>
+
+                    </section>
+                </div>
+            </div> -->
+
+            <!-- /END OF CONTENT -->
+            <!-- FOOTER -->
+            <div class="footer-space"></div>
+            <!-- / END OF FOOTER -->
+
+
+        </div>
+    </div>
+    <!--  END OF PAPER WRAP -->
+
+    <!-- RIGHT SLIDER CONTENT -->
+    <div class="sb-slidebar sb-right">
+        <div class="right-wrapper">
+            <div class="row">
+                <h3>
+                    <span><i class="entypo-gauge"></i>&nbsp;&nbsp;Currently Online</span>
+                </h3>
+                <div class="col-sm-12">
+
+                    <div class="widget-knob">
+                        <span class="chart" style="position:relative" data-percent="86">
+                            <span class="percent"></span>
+                        </span>
+                    </div>
+                    <div class="widget-def">
+                        <b>Distance traveled</b>
+                        <br>
+                        <i>86% to the check point</i>
+                    </div>
+
+                    <div class="widget-knob">
+                        <span class="speed-car" style="position:relative" data-percent="60">
+                            <span class="percent2"></span>
+                        </span>
+                    </div>
+                    <div class="widget-def">
+                        <b>The average speed</b>
+                        <br>
+                        <i>30KM/h avarage speed</i>
+                    </div>
+
+
+                    <div class="widget-knob">
+                        <span class="overall" style="position:relative" data-percent="25">
+                            <span class="percent3"></span>
+                        </span>
+                    </div>
+                    <div class="widget-def">
+                        <b>Overall result</b>
+                        <br>
+                        <i>30KM/h avarage Result</i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- END OF RIGHT SLIDER CONTENT-->
+
+    <!-- MAIN EFFECT -->
+    <!--<script type="text/javascript" src="../assets/js/preloader.js"></script>
+    <script type="text/javascript" src="../assets/js/bootstrap.js"></script>
+    <script type="text/javascript" src="assets/js/app.js"></script>
+    <script type="text/javascript" src="../assets/js/load.js"></script>
+    <script type="text/javascript" src="../assets/js/main.js"></script>
+    <script src="../assets/js/flatvideo/jquery.fitvids.js"></script>-->
+    <!--Angular scripts-->
+    <!-- Angular scripts -->
+    <!--<script src="../assets/lib/angular.min.js"></script>
+    <script src="../assets/lib/angular-route.min.js"></script>
+    <script src="../assets/lib/angular-animate.min.js"></script>
+    <script src="../assets/lib/angular-resource.min.js"></script>
+    <script src="../assets/lib/angular-sanitize.min.js"></script>
+    <script src="../assets/lib/angular-cookies.min.js"></script>
+    <script src="../app/app.js"></script>
+    <script src="../app/controllers.js"></script>-->
+
+    
+
+<!-- </body>
+
+</html> -->
+<script>
+$(function(){
+  $('.tabMnu').click(function(e){
+    e.preventDefault();
+    id = $(this).attr('rel');
+    $('.tabMnu').parent('li').removeClass('active');
+    $('.tabMnuCon').removeClass('in active');
+    $(this).parent('li').addClass('active');
+    $(id).addClass('in active');
+  });
+});
+</script>

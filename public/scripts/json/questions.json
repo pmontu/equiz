@@ -1,0 +1,90 @@
+[
+	{
+		"question" : "The average of first 50 natural numbers is _________",
+		"optionA"  : 25.3,
+		"optionB"  : 25.5,
+		"optionC"  : 25,
+		"optionD"  : 12.25,
+		"answer"   : 25.3
+	},
+              
+    {
+ 		"question" : "The average of a set of numbers reduces from 14 to 11 when the number 35 is removed. How  many numbers were in the original set?",
+        "optionA"  : 8,
+		"optionB"  : 11,
+		"optionC"  : 21,
+		"optionD"  : 25,
+		"answer"   : 8
+    },
+          
+    {
+		"question"  : "What is the simple interest earned on $10 000 invested for 3 months at a rate of 5% per annum?",
+        "optionA"   : "$100",
+		"optionB"   : "$125",
+		"optionC"   : "$500",
+		"optionD"   : "$1500",
+		"answer"    : "$125"
+    },
+
+    {
+        "question"  : "The perimeter of a rectangle is 26 cm.  The rectangle is converted to a square by tripling the width and taking a quarter of the length.  What is the perimeter of the resulting square?",
+        "optionA"	: "9cm",
+		"optionB"	: "12cm",
+		"optionC"	: "20 cm",
+		"optionD"	: "20 cm",
+		"answer"	: "12 cm"
+    },
+
+ 	{
+        "question"  : "Which of the following is the Highest Common Factor of 18, 24 and 36?",
+        "optionA"	: 6,
+		"optionB"	: 18,
+		"optionC"	: 36,
+		"optionD"	: 72,
+		"answer" 	: 6
+    },
+
+	{
+        "question"  : "The average of a set of numbers reduces from 14 to 11 when the number 35 is removed. How  many numbers were in the original set?",
+        "optionA": 8,
+		"optionB": 11,
+		"optionC": 21,
+		"optionD": 25,
+		"answer":8
+    },
+	
+	{
+        "question"  : "How many subsets does the set {a, b, c, d, e} have?",
+        "optionA": 2,
+		"optionB": 5,
+		"optionC": 10,
+		"optionD": 32,
+		"answer":32
+    },
+	
+	{
+        "question": "Which of the following is NOT a prime number?",
+        "optionA": 11,
+		"optionB": 21,
+		"optionC": 31,
+		"optionD": 41,
+		"answer":21
+    },
+	
+	{
+        "question"  : "Profits in the partnership of Bess, Bill and Bob are shared in the ratio 1 : 2 : 3.  If Bill's share of the profits is $300, what is Bob's share?",
+        "optionA": "$150",
+		"optionB": "$450",
+		"optionC": "$600",
+		"optionD": "$900",
+		"answer": "$450"
+    },
+    {
+		"question" : "The average of first 50 natural numbers is _________",
+		"optionA"  : 25.3,
+		"optionB"  : 25.5,
+		"optionC"  : 25,
+		"optionD"  : 12.25,
+		"answer"   : 25.3
+	}
+]
