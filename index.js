@@ -22,6 +22,9 @@ var allowCrossDomain = function(req, res, next) {
 app.use(allowCrossDomain);
 app.use(express.static(__dirname + "/"))
 
+var bodyParser = require('body-parser');
+app.use(bodyParser());
+
 app.get('/', function(req, res) {
 	res.json({message:"Hello World"})
 });
@@ -31,8 +34,11 @@ app.get('/user/:email', function(req, res) {
 	user.find({email: req.params.email}, {}, function(e, docs){
 		if(docs.length>0){
 			res.json(docs[0])
+		} else {
+			user.insert({email: req.params.email}, function(e, docs){
+				res.json(docs)
+			})
 		}
-		res.json({})
 	})
 });
 
@@ -47,6 +53,30 @@ app.get('/quiz/:quiz_id', function(req, res) {
 	question = db.get("question")
 	question.find({quiz: ObjectId(req.params.quiz_id)}, {}, function(e, docs){
 		res.json(docs)
+	})
+});
+
+app.post('/point', function(req, res) {
+	obj = req.body
+	console.log(obj)
+	if(!obj || !("user" in obj) || !("question" in obj)|| !("points" in obj))
+		res.send("oops")
+
+	var point = db.get("point")
+	point.find({user:obj.user, question:obj.question}, {}, function(e, docs){
+		if(docs.length==0){
+			point.insert(obj,function(e, docs){
+				res.json(obj)
+			})
+		} else {
+			point.updateById(docs[0]._id, {$set: {points: obj.points}}, function(e, docs2){
+				if (docs2==1){
+					res.send("updated")
+				} else {
+					res.json({})
+				}
+			})
+		}
 	})
 });
 
