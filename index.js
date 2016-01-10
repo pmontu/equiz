@@ -61,6 +61,8 @@ app.post('/point', function(req, res) {
 	console.log(obj)
 	if(!obj || !("user" in obj) || !("question" in obj)|| !("points" in obj))
 		res.send("oops")
+	obj.user = ObjectId(obj.user)
+	obj.question = ObjectId(obj.question)
 
 	var point = db.get("point")
 	point.find({user:obj.user, question:obj.question}, {}, function(e, docs){
@@ -77,6 +79,20 @@ app.post('/point', function(req, res) {
 				}
 			})
 		}
+	})
+});
+
+app.get('/user/:user_id/quiz/:quiz_id/point', function(req, res) {
+	question = db.get("question")
+	question_ids = []
+	question.find({quiz: ObjectId(req.params.quiz_id)}, {fields:{_id:1}},function(e, docs){
+		docs.forEach(function(obj){
+			question_ids.push(ObjectId(obj._id))
+		})
+		point = db.get("point")
+		point.find({question:{$in:question_ids}}, {}, function(e, docs){
+			res.json(docs)
+		})
 	})
 });
 
