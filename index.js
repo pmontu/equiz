@@ -26,7 +26,7 @@ app.get('/', function(req, res) {
 	res.json({message:"Hello World"})
 });
 
-app.get('/users/:email', function(req, res) {
+app.get('/user/:email', function(req, res) {
 	user = db.get("user")
 	user.find({email: req.params.email}, {}, function(e, docs){
 		if(docs.length>0){
@@ -44,9 +44,8 @@ app.get('/quiz', function(req, res) {
 });
 
 app.get('/quiz/:quiz_id', function(req, res) {
-	question = db.get("questions")
-	// quiz: ObjectId(req.params.quiz_id)
-	question.find({}, {}, function(e, docs){
+	question = db.get("question")
+	question.find({quiz: ObjectId(req.params.quiz_id)}, {}, function(e, docs){
 		res.json(docs)
 	})
 });
@@ -64,6 +63,5 @@ wss.on("connection", function(ws) {
 
   ws.on("close", function() {
     console.log("websocket connection close")
-    clearInterval(id)
   })
 })
