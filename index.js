@@ -22,6 +22,22 @@ var allowCrossDomain = function(req, res, next) {
 app.use(allowCrossDomain);
 app.use(express.static(__dirname + "/"))
 
+app.get('/', function(req, res) {
+	res.json({message:"Hello World"})
+});
+
+app.get('/users/:email', function(req, res) {
+	user = db.get("user")
+	user.find({email: req.params.email}, {}, function(e, docs){
+		console.log(docs)
+		if(docs.length>0){
+			res.json(docs[0])
+		}
+		res.json({})
+	})
+	
+});
+
 var server = http.createServer(app)
 server.listen(port)
 
