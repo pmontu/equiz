@@ -26,6 +26,80 @@ app.get('/', function(req, res) {
 	res.sendFile(__dirname + '/public/index.html');
 });
 
+var bodyParser = require('body-parser');
+app.use(bodyParser());
+
+app.get('/', function(req, res) {
+	res.json({message:"Hello World"})
+});
+
+app.get('/user/:email', function(req, res) {
+	user = db.get("user")
+	user.find({email: req.params.email}, {}, function(e, docs){
+		if(docs.length>0){
+			res.json(docs[0])
+		} else {
+			user.insert({email: req.params.email}, function(e, docs){
+				res.json(docs)
+			})
+		}
+	})
+});
+
+app.get('/quiz', function(req, res) {
+	quiz = db.get("quiz")
+	quiz.find({}, {}, function(e, docs){
+		res.json(docs)
+	})
+});
+
+app.get('/quiz/:quiz_id', function(req, res) {
+	question = db.get("question")
+	question.find({quiz: ObjectId(req.params.quiz_id)}, {}, function(e, docs){
+		res.json(docs)
+	})
+});
+
+app.post('/point', function(req, res) {
+	obj = req.body
+	console.log(obj)
+	if(!obj || !("user" in obj) || !("question" in obj)|| !("points" in obj))
+		res.send("oops")
+	obj.user = ObjectId(obj.user)
+	obj.question = ObjectId(obj.question)
+
+	var point = db.get("point")
+	point.find({user:obj.user, question:obj.question}, {}, function(e, docs){
+		if(docs.length==0){
+			point.insert(obj,function(e, docs){
+				res.json(obj)
+			})
+		} else {
+			point.updateById(docs[0]._id, {$set: {points: obj.points}}, function(e, docs2){
+				if (docs2==1){
+					res.send("updated")
+				} else {
+					res.json({})
+				}
+			})
+		}
+	})
+});
+
+app.get('/user/:user_id/quiz/:quiz_id/point', function(req, res) {
+	question = db.get("question")
+	question_ids = []
+	question.find({quiz: ObjectId(req.params.quiz_id)}, {fields:{_id:1}},function(e, docs){
+		docs.forEach(function(obj){
+			question_ids.push(ObjectId(obj._id))
+		})
+		point = db.get("point")
+		point.find({question:{$in:question_ids}}, {}, function(e, docs){
+			res.json(docs)
+		})
+	})
+});
+
 var server = http.createServer(app)
 server.listen(port)
 
@@ -39,6 +113,5 @@ wss.on("connection", function(ws) {
 
   ws.on("close", function() {
     console.log("websocket connection close")
-    //clearInterval(id)
   })
 })

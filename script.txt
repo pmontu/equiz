@@ -1,0 +1,3 @@
+db.quiz.insert([{"name":"Quiz 1"},{"name":"Quiz 2"}])
+
+db.question.update({}, {$set:{"quiz":ObjectId("569205ea5fe406c7639ffbf7")}}, {multi: true})
