@@ -29,13 +29,26 @@ app.get('/', function(req, res) {
 app.get('/users/:email', function(req, res) {
 	user = db.get("user")
 	user.find({email: req.params.email}, {}, function(e, docs){
-		console.log(docs)
 		if(docs.length>0){
 			res.json(docs[0])
 		}
 		res.json({})
 	})
-	
+});
+
+app.get('/quiz', function(req, res) {
+	quiz = db.get("quiz")
+	quiz.find({}, {}, function(e, docs){
+		res.json(docs)
+	})
+});
+
+app.get('/quiz/:quiz_id', function(req, res) {
+	question = db.get("questions")
+	// quiz: ObjectId(req.params.quiz_id)
+	question.find({}, {}, function(e, docs){
+		res.json(docs)
+	})
 });
 
 var server = http.createServer(app)
