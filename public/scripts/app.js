@@ -47,7 +47,7 @@ angular
       return (!!input) ? input.charAt(0).toUpperCase() + input.substr(1).toLowerCase() : '';
     }
   })
-  .constant('BaseUrl', 'http://10.0.0.2:5000/')
+  .constant('BaseUrl', 'http://127.0.0.1:5000/')
   .config(['growlProvider', function(growlProvider) {
     growlProvider.globalTimeToLive(1000);
   }]);

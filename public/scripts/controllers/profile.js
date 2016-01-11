@@ -2,7 +2,16 @@
 
 angular.module('quizApp')
   .controller('profileCtrl', ['$scope', '$location', '$cookieStore', 'growl', '$http', 'BaseUrl', function ($scope, $location, $cookieStore, growl, $http, BaseUrl) {
-  	function init()
+  	
+    var monthName = 
+    [
+      "JAN", "FEB", "MAR",
+      "APR", "MAY", "JUN",
+      "JUL", "AUG", "SEP",
+      "OCT", "NOV", "DEC"
+    ];
+
+    function init()
   	{
   		if($cookieStore.get('user') === undefined)
     	{
@@ -10,9 +19,18 @@ angular.module('quizApp')
     	}
     	else
     	{
-	  		//$scope.user = $cookieStore.get('user');
-        $http.get(BaseUrl + "quiz/").then(function(data){
-          console.log("data", data);
+	  		$scope.user = $cookieStore.get('user');
+        console.log("$scope.user", $scope.user);
+        $http.get(BaseUrl + "quiz?type=live").then(function(data){
+          var liveData = data.data;
+          for(var i=0; i < liveData.length; i++)
+          {
+            if(liveData[i].started_at)
+            {
+              liveData[i].started_at = ("0" + new Date(liveData[i].started_at).getDate()).slice(-2) + " " + monthName[new Date(liveData[i].started_at).getMonth()] + " " + new Date(liveData[i].started_at).getFullYear();
+            }
+          }
+          $scope.liveData = liveData;
         })
     	}
   	};
@@ -21,8 +39,15 @@ angular.module('quizApp')
 
   	$scope.takeQuiz = function(id)
   	{
-  		$location.path("/quiz/" + '569205ea5fe406c7639ffbf7');
+  		$location.path("/quiz/" + id);
   	};
+
+    $scope.upcoming = function()
+    {
+      $http.get(BaseUrl + "quiz?type=upcoming").then(function(data){
+        $scope.upcomingData = data.data;
+      })
+    }
 
     $scope.signout = function()
     {

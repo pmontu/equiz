@@ -46,15 +46,27 @@ app.get('/user/:email', function(req, res) {
 	})
 });
 
-app.get('/quiz', function(req, res) {
+app.get('/quiz/', function(req, res) {
+	var filter = req.query.type;
 	quiz = db.get("quiz")
-	quiz.find({}, {}, function(e, docs){
-		res.json(docs)
-	})
+	if(filter) {
+		if(filter == 'live')
+		{
+			quiz.find({started_at : {$lt : new Date()}}, {}, function(e, docs){
+				res.json(docs)
+			})
+		}
+		else
+		{
+			quiz.find({started_at : {$gt : new Date()}}, {}, function(e, docs){
+				res.json(docs)
+			})
+		}	
+	}
 });
 
 app.get('/quiz/:quiz_id', function(req, res) {
-	question = db.get("question")
+	question = db.get("question");
 	question.find({quiz: ObjectId(req.params.quiz_id)}, {}, function(e, docs){
 		res.json(docs)
 	})

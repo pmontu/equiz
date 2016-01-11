@@ -7,8 +7,7 @@ angular.module('quizApp')
         .then(function(data) {
             console.log("data", data.data);
             var userDtls = data.data;
-            //userDtls.user = userDtls.email..split(/[@ | .]+/);
-            //console.log(userDtls.user);
+            userDtls.user = userDtls.email.split(/[@.]+/)[0];
             $cookieStore.put('user', userDtls);
             $location.path("/profile");
         })

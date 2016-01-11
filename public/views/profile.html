@@ -21,7 +21,7 @@
                 <ul style="margin-right:0;" class="nav navbar-nav navbar-right">
                     <li>
                         <a data-toggle="dropdown" class="dropdown-toggle" href="javascript:void(0);">
-                            <img alt="" class="admin-pic img-circle" src="http://api.randomuser.me/portraits/thumb/men/10.jpg">Hi, {{user.name | capitalize}}
+                            <img alt="" class="admin-pic img-circle" src="http://api.randomuser.me/portraits/thumb/men/10.jpg">{{user.user | capitalize}}
                         </a>
                     </li>
                     <li>
@@ -62,27 +62,32 @@
 
     <div class="container">
   <ul class="nav nav-tabs">
-    <li class="active"><a href="javscript:void(0);" rel="#home" class="tabMnu">Live Challenges</a></li>
-    <li><a href="javscript:void(0);" rel="#menu1" class="tabMnu">Upcoming Challenges</a></li>
+    <li class="active"><a href="/" rel="#home" class="tabMnu">Live Challenges</a></li>
+    <li><a ng-click="upcoming()" rel="#menu1" class="tabMnu">Upcoming Challenges</a></li>
     <li><a href="javscript:void(0);" rel="#menu2" class="tabMnu">Previous Challenges</a></li>
     <li><a href="javscript:void(0);" rel="#menu3" class="tabMnu"><i class="fa fa-calendar"></i>&nbsp;&nbsp;&nbsp;Challenges Calendar</a></li>
   </ul>
 
   <div class="tab-content">
-    <div id="home" class="tabMnuCon tab-pane fade in active">
+    <div id="home" ng-repeat="live in liveData" class="tabMnuCon tab-pane fade in active">
       <h3></h3>
       <table style="border:1px solid #323754; border-spacing: 50px; padding:30px;">
         <tr style="background:#323754; color:#fff">
-          <td style="padding:10px 10px 0 10px;">Physics</td>
-          <td style="padding:10px 10px 0 10px;">120 Points</td>
+          <td style="padding:10px 10px 0 10px;"><b>{{live.name}}</b></td>
+          <td style="padding:10px 10px 0 10px;">200 Points</td>
         </tr>
         <tr style="background:#323754; color:#fff">
-          <td style="padding:0 10px 10px 10px;">Electric Charges, Forces and Fields, Current Electricity, Moving Charges&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+          <td> Syllabus :
+              <span ng-repeat="syllabus in live.syllabus"> 
+                <i ng-if="$last">{{syllabus}}</i>
+                <i ng-if="!$last">{{syllabus}}, </i>
+            </span>
+          </td>
           <td style="padding:0 10px 10px 10px;"></td>
         </tr>
         <tr style="color:#323754; padding:30px;">
-          <td style="padding:10px;">Started at 01 Dec 2015<span style="padding-right:5em"></span><i class="fa fa-clock-o"></i> IST 10:30 PM - 11:30 AM 1h<span style="padding-right:5em"></span>52 are participating<span style="padding-right:5em"></span>Earn points</td>
-          <td style="padding:10px;"><a ng-click="takeQuiz(1)" style="cursor:pointer;"><span style="border:1px solid blue; color:blue; padding:5px;">PARTICIPATE</span></a></td>
+          <td style="padding:10px;">Started at {{live.started_at}}<span style="padding-right:5em"></span><i class="fa fa-clock-o"></i> IST 10:30 PM - 11:30 AM 1h<span style="padding-right:5em"></span><span style="padding-right:5em"></span>Earn points</td>
+          <td style="padding:10px;"><a ng-click="takeQuiz(live._id)" style="cursor:pointer;"><span style="border:1px solid blue; color:blue; padding:5px;">PARTICIPATE</span></a></td>
       </tr>
       </table>
     </div>

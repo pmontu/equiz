@@ -59,29 +59,6 @@
         </div>
         <!-- /.container-fluid -->
     </nav>
-
-    <!-- /END OF TOP NAVBAR -->
-
-    <!-- SIDE MENU -->
-    <!-- <div id="skin-select">
-        <div id="logo">
-            <h1>eQuiz
-                <span>v 1.0.1</span>
-            </h1>
-        </div>
-
-        <a id="toggle">
-            <span class="entypo-menu"></span>
-        </a>
-        <div class="skin-part">
-            <div id="tree-wrap">
-                
-            </div>
-        </div>
-    </div> -->
-    <!-- END OF SIDE MENU -->
-
-    <!--  PAPER WRAP -->
     <div class="wrap-fluid">
         <div class="container-fluid paper-wrap bevel tlbr">
             <!-- CONTENT -->
@@ -118,10 +95,8 @@
                             Points : &nbsp;&nbsp;<p> {{score}} </p>
                         </div>
                     </div>           
-                </div>    
+                </div>
             </div>    
-            <!--/ TITLE -->
-            <!--CONTENT-->
             <div class="row" style="margin-top:30px;padding:0 15px;">
                 <!--  BLOG CONTENT -->
                 <div class="col-sm-8">
@@ -131,38 +106,16 @@
                             <h4>Question : {{index+1}}</h4></br>
                             <p>{{questions[index].question}}</p>
                             <hr>
-                            <div class="col-sm-12">
-                                <div class="col-sm-6" ng-click="next(index, questions[index].optionA, questions[index].answer)" style="cursor:pointer; margin-bottom:10px;">
-                                    <div class="btn btn-primary" style="width:90%;padding: 13px!important;display: block;">
-                                        Option A : {{questions[index].choices[0]}}
+                            <div ng-repeat="choice in questions[index].choices">
+                                <div class="col-sm-12">   
+                                    <div class="col-sm-6" ng-click="next($index, questions[index])" style="cursor:pointer; margin-bottom:10px;">
+                                        <div class="btn btn-primary">{{capitalAlphabetMap[$index]}} : {{choice}}</div>
                                     </div>
-                                </div>
-                                <div class="col-sm-6" ng-click="next(index, questions[index].optionB, questions[index].answer)" style="cursor:pointer;margin-bottom:10px;">
-                                    <div class="btn btn-primary" style="width:90%;padding: 13px!important;display: block;;">
-                                        Option B : {{questions[index].choices[1]}}
-                                    </div>
-                                </div>
+                                </div>    
                             </div>
-                            <div class="col-sm-12">
-                                <div class="col-sm-6" ng-click="next(index, questions[index].optionC, questions[index].answer)" style="cursor:pointer;margin-bottom:10px;">
-                                    <div class="btn btn-primary" style="width:90%;padding: 13px!important;display: block;">
-                                        Option C: {{questions[index].choices[2]}}
-                                    </div>
-                                </div>
-                                <div class="col-sm-6" ng-click="next(index, questions[index].optionD, questions[index].answer)" style="cursor:pointer;margin-bottom:10px;">
-                                    <div class="btn btn-primary" style="width:90%;padding: 13px!important;display: block;">
-                                        Option D: {{questions[index].choices[3]}}
-                                    </div>
-                                </div>
-                            <div>
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
-                <!--  END OF BLOG CONTENT -->
-
-                <!--  BLOG SIDE CONTENT -->
                 <div class="col-sm-4">
                     <div class="panel panel-default" ng-repeat="participant in participants | orderBy:'-points'">
 
@@ -176,28 +129,13 @@
                         <hr style="margin:0;">
                     </div>
                 </div>
-                <!--  END OF BLOG SIDE CONTENT -->
             </div>
-
-            <!-- /END OF CONTENT -->
-            <!-- FOOTER -->
-            <div growl>{{1+1}}</div>
-            <div class="footer-space"></div>
-            <div id="footer">
-                <div class="devider-footer-left"></div>
-                <div class="time">
-                    <p id="spanDate"></p>
-                    <p id="clock"></p>
-                </div>
-                <div class="copyright">Make with Love
-                    <span class="entypo-heart"></span> 2015 <a href="javascript:void(0);"> November Hackathon</a> All Rights Reserved.</div>
-                <div class="devider-footer"></div>
-
-            </div>
-            <!-- / END OF FOOTER -->
-
-
         </div>
+        <!-- /END OF CONTENT -->
+        <!-- FOOTER -->
+        <div growl>{{1+1}}</div>
+
+        <!-- / END OF FOOTER -->
     </div>
     <!--  END OF PAPER WRAP -->
 
@@ -247,4 +185,17 @@
             </div>
         </div>
     </div>
+    <div class="footer-space">
+        <div id="footer">
+            <div class="devider-footer-left"></div>
+            <div class="time">
+                <p id="spanDate"></p>
+                <p id="clock"></p>
+            </div>
+            <div class="copyright">Make with Love
+                <span class="entypo-heart"></span> 2015 <a href="javascript:void(0);"> November Hackathon</a> All Rights Reserved.</div>
+            <div class="devider-footer"></div>
+
+        </div>
+    </div>    
 </div>

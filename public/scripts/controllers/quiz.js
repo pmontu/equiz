@@ -21,6 +21,10 @@ angular.module('quizApp')
         "points" : 1804
       }
     ];
+    $scope.capitalAlphabetMap = [];
+    for (var i = 0; i < 26; i++) {
+      $scope.capitalAlphabetMap[i] = String.fromCharCode(i+65);
+    }
 
 
     function init()
@@ -33,9 +37,9 @@ angular.module('quizApp')
       {
         $scope.user = $cookieStore.get('user');
         var quizId = $location.url().split("/quiz/")[1];
-        $http.get(BaseUrl + "quiz/" + quizId).then(function(questions) {
+        //var quizId = '56925042d0381adb988ca1fb';
+        $http.get(BaseUrl + "quiz/" + quizId + "/").then(function(questions) {
           $scope.questions = questions.data;
-          console.log("questions", questions.data);
           qns = $scope.questions.length;
           $scope.index = 0;
         })
@@ -91,18 +95,29 @@ angular.module('quizApp')
       $location.path('/#/')
     };
 
-  	$scope.next = function(undefined, option, answer)
+  	$scope.next = function(position, qn)
   	{
-      if(option == answer)
+      var point=0;
+      if((position + 1) === qn.answer)
   		{
-  			$scope.score+=Math.ceil($scope.counter/2);
-        $scope.participants[($scope.user.id)-2].points+=Math.ceil($scope.counter/2);
+  			point+=Math.ceil($scope.counter/2);
+        $scope.score+=Math.ceil($scope.counter/2);
+
+        //$scope.participants[($scope.user.id)-2].points+=Math.ceil($scope.counter/2);
         growl.success("yeah! your answer is right");
   		}
       else
       {
         growl.error("Oh! Your answer is wrong!");
-      } 
+      }
+      var postData = {
+        "user"      : $scope.user._id,
+        "question"  : qn._id,
+        "points"    : point
+      };
+      $http.post(BaseUrl + 'point/', postData).then(function(pointData) {
+        console.log("pointData", pointData);
+      })
       updateusers(); 
       $scope.index++;
       if(qns == $scope.index)
@@ -129,8 +144,8 @@ angular.module('quizApp')
 
     function gameOver() {
       var obj = {
-        "score" : $scope.score,
-        "total" : $scope.participants[($scope.user.id)-2].points
+        "score" : $scope.score
+        //"total" : $scope.participants[($scope.user.id)-2].points
       };
       var modalInstance = $modal.open({
         templateUrl: 'views/gameOver.html',
